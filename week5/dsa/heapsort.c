@@ -47,6 +47,13 @@ void gen_desc(int arr[], int n){
         arr[i] = n-i;
     }
 }
+
+void gen_random(int arr[], int n){
+    for(int i = 0 ; i<n ; i++){
+        arr[i] = rand();
+    }
+}
+
 int main(){
     int n;
     printf("enter length of array: ");
@@ -54,16 +61,12 @@ int main(){
 
     int *arr = (int *)malloc(n*(sizeof(int)));
 
-    // for(int i = 0 ; i<n ; i++){ //random = 0.002000 seconds for 10000
-    //     arr[i] = rand();
-    // }
+    gen_random(arr,n);
 
-    // gen_asc(arr,n);
+    gen_asc(arr,n);
+
     gen_desc(arr,n);
 
-    // for(int i =0  ; i<n ; i++){
-    //     printf("%d ",arr[i]);
-    // }
 
     clock_t start , end;
     double exe_time;
@@ -75,8 +78,4 @@ int main(){
     exe_time = (double)(end-start)/CLOCKS_PER_SEC;
     printf("Execution time is: %f seconds\n", exe_time);
 
-    // printf("\n");
-    // for(int i = 0 ; i<n ; i++){
-    //     printf("%d ",arr[i]);
-    // }
 }
