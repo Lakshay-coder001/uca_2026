@@ -13,7 +13,7 @@ void swap(Node *a, Node *b)
     *b = temp;
 }
 
-void heapifyDown(Node heap[], int n, int i)
+void heapify(Node heap[], int n, int i)
 {
     int largest = i;
     int left = 2*i +1;
@@ -28,14 +28,14 @@ void heapifyDown(Node heap[], int n, int i)
     if(largest != i)
     {
         swap(&heap[i], &heap[largest]);
-        heapifyDown(heap, n, largest);
+        heapify(heap, n, largest);
     }
 }
 
 void buildHeap(Node heap[], int n)
 {
     for(int i = n / 2 - 1; i >= 0; i--){
-        heapifyDown(heap, n, i);
+        heapify(heap, n, i);
     }
 }
 
@@ -56,7 +56,7 @@ double solve(int population[], int n, int k)
 
         heap[0].clinics++;
         heap[0].load = (double)heap[0].population / heap[0].clinics;
-        heapifyDown(heap, n, 0);
+        heapify(heap, n, 0);
         k--;
     }
     double res = heap[0].load;
