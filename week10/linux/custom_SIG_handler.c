@@ -11,7 +11,7 @@ void handle_sigint(int sig) {
     signal_count++;
     printf("Ctrl+C pressed: (times)%d\n",signal_count);
     if(signal_count == 3){
-        kill(getpid(),SIGKILL);
+        // kill(getpid(),SIGKILL);// this will work on WSL but i wrote code in vscode so not working
     }
 }
 
